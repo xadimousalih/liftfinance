@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+<head>
+<title>Ecritures</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12 grid-margin stretch-card">
+				<div class="card">
+					<div th:if="${param.success}">
+						<div class="alert alert-info">You have successfully create a
+							ecriture !</div>
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">Modification écriture</h4>
+
+						<form class="forms-sample" action="#"
+							th:action="@{/pages/save-ecriture}" th:object="${ecriture}"
+							method="post">
+							<div class="col-12 grid-margin">
+								<div class="card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Numéro</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{numero}" id="numero" placeholder="Numero">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Libelle </label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{libelle}" id="libelle" placeholder="Libelle">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Date
+														écriture</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control" th:field="*{created}"
+															id="created" placeholder="dd/mm/yyyy" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Mois</label>
+													<div class="col-sm-9">
+														<select id="mois" name="mois" class="form-control">
+															<option
+																th:each="m : ${T(org.formation.model.MoisEnum).values()}"
+																th:text="${m}" th:value="${m}"></option>
+
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Catégorie</label>
+													<div class="col-sm-9">
+														<select id="categorie" name="categorie" class="form-control">
+															<option value="0">selection catégorie</option>
+															<option th:each="ca : ${categories}" th:value="${ca.id}"
+																th:text="${ca.name}"></option>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Total
+														Mensuel</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															placeholder="Total Mensuel" th:field="*{totalMensuel}"
+															id="totalMensuel" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Total Annee</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															placeholder="Total Annee" th:field="*{totalAnnee}"
+															id="totalAnnee" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Total Global</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{totalGlobal}" id="totalGlobal"
+															placeholder="Total Global" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6" hidden="true">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Entreprise</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{entreprise}" id="entreprise"
+															placeholder="Entreprise" />
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<button type="submit" class="btn btn-success mr-2">Modifier
+											une écriture</button>
+										<button class="btn btn-light">Cancel</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

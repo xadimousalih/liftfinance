@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Roles</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+		
+					<div class="card-body">
+						<h4 class="card-title">Modification d'un role</h4>
+
+						<form class="forms-sample" action="#"
+							th:action="@{/admin/save-role}" th:object="${role}"
+							method="post">
+							<div class="form-group">
+								<label for="name">Libellé</label> <input type="text"
+									class="form-control" th:field="*{name}" id="reference"
+									placeholder="Libelle"> <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+							</div>
+							
+							<button type="submit" class="btn btn-success mr-2">Modifier
+								un role</button>
+							<button class="btn btn-light">Cancel</button>
+						</form>
+					</div>
+				</div>
+
+		
+	</section>
+</body>
+</html>

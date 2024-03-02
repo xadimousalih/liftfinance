@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+<head>
+<title>Utilisateurs</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12 grid-margin stretch-card">
+				<div class="card">
+					<div th:if="${param.success}">
+						<div class="alert alert-info">You have successfully create a
+							utilisateurs !</div>
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">Modification utilisateur</h4>
+						<form class="forms-sample" action="#"
+							th:action="@{/admin/save-member}" th:object="${member}"
+							method="post">
+							<div class="col-12 grid-margin">
+								<div class="card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Login</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{login}" id="login" placeholder="Code">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Prénoms</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{firstName}" id="firstName"
+															placeholder="Prénoms">
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Nom</label>
+													<div class="col-sm-9">
+														<input class="form-control" th:field="*{lastName}"
+															id="lastName" placeholder="Nom" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Role</label>
+													<div class="col-sm-9">
+														<select class="form-control">
+															<option value="0">selection role</option>
+															<option th:each="r : ${roles}" th:value="${r.id}"
+																th:text="${r.name}"></option>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Email</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															placeholder="Email" th:field="*{email}" id="email" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Téléphone</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{telephone}" id="telephone"
+															placeholder="Téléphone" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Année de
+														création</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															th:field="*{created}" id="created"
+															placeholder="Année de création" />
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Date de
+														désactivation</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control"
+															th:field="*{disabled}" id="disabled"
+															placeholder="Date de désactivation" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<button type="submit" class="btn btn-success mr-2">Modifier
+											un utilisateur</button>
+										<button class="btn btn-light">Cancel</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+</body>
+</html>

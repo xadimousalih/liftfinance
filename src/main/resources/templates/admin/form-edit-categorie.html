@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+	  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+<head>
+<title>Categories</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+			
+					<div class="card-body">
+						<h4 class="card-title">Modification de la  categorie</h4>
+
+						<form class="forms-sample" action="#"
+							th:action="@{/admin/save-categorie}" th:object="${categorie}"
+							method="post">
+							<div class="form-group">
+								<label for="reference">Référence</label> <input type="text"
+									class="form-control" th:field="*{reference}" id="reference"
+									placeholder="Référence"> <span
+									th:if="${#fields.hasErrors('reference')}" th:errors="*{reference}"></span>
+
+							</div>
+							<div class="form-group">
+								<label for="name">Nom</label> <input type="text"
+									class="form-control" th:field="*{name}" id="name"
+									placeholder="Name"> <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+							</div>
+
+							<div class="form-group">
+								<label for="description">Description</label>
+								<textarea class="form-control" th:field="*{description}"
+									id="description" placeholder="Description" rows="2"></textarea>
+								<span th:if="${#fields.hasErrors('description')}"
+									th:errors="*{description}"></span>
+
+							</div>
+							<button type="submit" class="btn btn-success mr-2">Modifier
+								la categorie</button>
+							<button class="btn btn-light">Cancel</button>
+						</form>
+					</div>
+				</div>
+		
+
+	</section>
+</body>
+</html>
