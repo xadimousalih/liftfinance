@@ -26,6 +26,10 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
+src/main/resources/application.properties
+src/main/resources/docker-compose.yml
 
 ### VS Code ###
 .vscode/
+
+### kamal ignore files ###

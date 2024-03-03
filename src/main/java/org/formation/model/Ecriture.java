@@ -30,7 +30,7 @@ public class Ecriture {
 	@Temporal(TemporalType.DATE)
 	private Date created, disabled;
 	
-	private Double totalMensuel, totalAnnee, totalGlobal;
+	private Double montantEcriture, totalMensuel, totalAnnee, totalGlobal;
 	
 	@Enumerated(EnumType.STRING)
     private MoisEnum mois;
