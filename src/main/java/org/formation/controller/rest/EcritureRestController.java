@@ -3,16 +3,19 @@ package org.formation.controller.rest;
 import javax.validation.Valid;
 
 import org.formation.model.Ecriture;
+import org.formation.model.MoisEnum;
 import org.formation.repositories.EcritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/ecritures")
@@ -34,4 +37,23 @@ public class EcritureRestController {
 		return new ResponseEntity<Ecriture>(ecriture, HttpStatus.CREATED);
 		
 	}
+
+
+	@GetMapping("/list")
+	public Page<Ecriture> getAllEcritures(
+			@RequestParam(name = "mois", required = false) MoisEnum mois,
+			@RequestParam(name = "categorieRef", required = false) String categorieRef,
+			Pageable pageable) {
+		if (mois != null && categorieRef != null) {
+			return ecritureRepository.findByMoisAndCategorie_Reference(mois, categorieRef, pageable);
+		} else if (mois != null) {
+			return ecritureRepository.findByMois(mois, pageable);
+		} else if (categorieRef != null) {
+			return ecritureRepository.findByCategorie_Reference(categorieRef, pageable);
+		} else {
+			return ecritureRepository.findAll(pageable);
+		}
+	}
+
+
 }

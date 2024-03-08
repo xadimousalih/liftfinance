@@ -16,7 +16,7 @@ public class LibelleEcriture {
 	private String description;
 
 	@ManyToOne
-	@JoinColumn(name = "id", insertable = false, updatable = false)
+	@JoinColumn(name = "id_categorie", insertable = false, updatable = false)
 	private Categorie categorie;
 
 }

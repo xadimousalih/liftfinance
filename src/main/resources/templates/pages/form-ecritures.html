@@ -62,9 +62,9 @@
 													<label class="col-sm-3 col-form-label">Date
 														écriture</label>
 													<div class="col-sm-9">
-														<input type="date" class="form-control" th:field="*{created}" 
+														<input type="date" class="form-control" th:field="*{created}"
 															id="created" placeholder="dd/mm/yyyy" />
-															
+
 <!-- 															th:value="${#dates.format(created, 'dd/MM/yyyy')}" -->
 
 													</div>
@@ -116,6 +116,16 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Montant Ecriture</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control"
+															   placeholder="Montant Ecriture" th:field="*{montantEcriture}"
+															   id="montantEcriture" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Total Annee</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control"
@@ -124,7 +134,6 @@
 													</div>
 												</div>
 											</div>
-
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Total Global</label>

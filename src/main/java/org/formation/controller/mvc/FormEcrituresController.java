@@ -81,6 +81,8 @@ public class FormEcrituresController {
 			existingEcriture.setCreated(ecriture.getCreated());
 			existingEcriture.setDisabled(ecriture.getDisabled());
 
+			existingEcriture.setMontantEcriture(ecriture.getMontantEcriture());
+
 			existingEcriture.setTotalMensuel(ecriture.getTotalMensuel());
 			existingEcriture.setTotalAnnee(ecriture.getTotalAnnee());
 			existingEcriture.setTotalGlobal(ecriture.getTotalGlobal());
