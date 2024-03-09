@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/libelle-ecriture")
-public class LibelleEcritureController {
+public class LibelleEcritureRestController {
 
     @Autowired
     private LibelleEcritureRepository libelleEcritureRepository;
