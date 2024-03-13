@@ -21,6 +21,11 @@
 								Add class
 								<code>.table-bordered</code>
 							</p>
+							<form method="get" th:action="@{form-list-ecritures}">
+								<label>Keyword</label>
+								<input type="text" name="keyword">
+								<button type="submit" class="btn btn-primary">Chercher</button>
+							</form>
 							<div class="table-responsive">
 								<table class="table table-bordered">
 									<thead>
@@ -41,6 +46,13 @@
 									</tr>
 									</tbody>
 								</table>
+								<ul class="nav nav-pills">
+									<li th:each="page, status:${pages}">
+										<a th:class="${status.index==currentPage?'btn btn-primary ms-1':'btn btn-outline-primary'}"
+										   th:text="${status.index}"
+										th:href="@{form-list-ecritures(page=${status.index})}"></a>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>

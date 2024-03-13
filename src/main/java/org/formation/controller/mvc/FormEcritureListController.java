@@ -5,6 +5,7 @@ import org.formation.model.MoisEnum;
 import org.formation.repositories.EcritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +26,13 @@ public class FormEcritureListController {
     private EcritureRepository ecritureRepository;
 
     @GetMapping(value = "form-list-ecritures")
-    public ModelMap mmListEcritures(Model model) {
-        List<Ecriture> ecritures = ecritureRepository.findAll();
-        model.addAttribute("ecritures", ecritures);
+    public ModelMap mmListEcritures(Model model,
+                                    @RequestParam(name="page", defaultValue = "0") int page,
+                                    @RequestParam(name = "size", defaultValue = "5") int size) {
+        Page<Ecriture> ecrituresPage = ecritureRepository.findAll(PageRequest.of(page, size));
+        model.addAttribute("ecritures", ecrituresPage.getContent());
+        model.addAttribute("pages", new int[ecrituresPage.getTotalPages()]);
+        model.addAttribute("currentPage", page);
         return new ModelMap();
     }
 
