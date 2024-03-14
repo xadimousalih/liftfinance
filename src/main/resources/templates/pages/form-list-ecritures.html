@@ -21,11 +21,11 @@
 								Add class
 								<code>.table-bordered</code>
 							</p>
-							<form method="get" th:action="@{form-list-ecritures}">
+							<!--<form method="get" th:action="@{form-list-ecritures}">
 								<label>Keyword</label>
-								<input type="text" name="keyword">
+								<input type="text" name="${categorieRef}">
 								<button type="submit" class="btn btn-primary">Chercher</button>
-							</form>
+							</form>-->
 							<div class="table-responsive">
 								<table class="table table-bordered">
 									<thead>
@@ -34,6 +34,7 @@
 										<th>Libelle</th>
 										<th>Montant</th>
 										<th>Mois</th>
+										<th>Référence</th>
 
 									</tr>
 									</thead>
@@ -43,6 +44,7 @@
 										<td th:text="${e.libelle}" class="font-weight-medium"/>
 										<td th:text="${e.montantEcriture}" class="font-weight-medium"/>
 										<td th:text="${e.mois}" class="font-weight-medium"/>
+										<td th:text="${e.categorie?.reference}" class="font-weight-medium"></td>
 									</tr>
 									</tbody>
 								</table>
