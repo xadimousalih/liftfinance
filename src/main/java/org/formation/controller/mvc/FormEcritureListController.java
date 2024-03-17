@@ -28,22 +28,22 @@ public class FormEcritureListController {
                                           @RequestParam(name = "page", defaultValue = "0") int page,
                                           @RequestParam(name = "size", defaultValue = "5") int size,
                                           @RequestParam(name = "mois", required = false) MoisEnum mois,
-                                          @RequestParam(name = "categorieRef", required = false) String categorieRef) {
+                                          @RequestParam(name = "libelle", required = false) String libelle) {
          Page<Ecriture> ecrituresPage;
         Pageable pageable = PageRequest.of(page, size);
-        if (mois != null && categorieRef != null) {
-            ecrituresPage = ecritureRepository.findByMoisAndCategorie_Reference(mois, categorieRef, pageable);
+        if (mois != null && libelle != null) {
+            ecrituresPage = ecritureRepository.findBylibelleContainsIgnoreCase(libelle, pageable);
         } else if (mois != null) {
             ecrituresPage =  ecritureRepository.findByMois(mois, pageable);
-        } else if (categorieRef != null) {
-            ecrituresPage =  ecritureRepository.findByCategorie_Reference(categorieRef, pageable);
+        } else if (libelle != null) {
+            ecrituresPage =  ecritureRepository.findBylibelleContainsIgnoreCase(libelle, pageable);
         } else {
             ecrituresPage =  ecritureRepository.findAll(pageable);
         }
         model.addAttribute("ecritures", ecrituresPage.getContent());
         model.addAttribute("pages", new int[ecrituresPage.getTotalPages()]);
         model.addAttribute("currentPage", page);
-        model.addAttribute("categorieRef", categorieRef);
+        model.addAttribute("libelle", libelle);
         return  new ModelMap();
     }
 

@@ -16,5 +16,6 @@ public interface EcritureRepository extends JpaRepository<Ecriture, Long> {
 	Page<Ecriture> findByMois(MoisEnum mois, Pageable pageable);
 	Page<Ecriture> findByCategorie_Reference(String reference, Pageable pageable);
 	Page<Ecriture> findByMoisAndCategorie_Reference(MoisEnum mois, String reference, Pageable pageable);
+	Page<Ecriture> findBylibelleContainsIgnoreCase(String libelle, Pageable pageable);
 
 }

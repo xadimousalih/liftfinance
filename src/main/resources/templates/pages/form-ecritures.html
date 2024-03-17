@@ -48,8 +48,10 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Libelle </label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control"
-															th:field="*{libelle}" id="libelle" placeholder="Libelle">
+														<select class="form-control" id="libelle" name="libelle">
+															<option th:each="lib : ${libelles}"
+																	th:value="${lib.id}" th:text="${lib.name}"></option>
+														</select>
 													</div>
 												</div>
 											</div>

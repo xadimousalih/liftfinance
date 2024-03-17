@@ -8,9 +8,11 @@ import javax.validation.Valid;
 import org.formation.model.Categorie;
 import org.formation.model.Ecriture;
 import org.formation.model.Entreprise;
+import org.formation.model.LibelleEcriture;
 import org.formation.repositories.CategorieRepository;
 import org.formation.repositories.EcritureRepository;
 import org.formation.repositories.EntrepriseRepository;
+import org.formation.repositories.LibelleEcritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,12 +33,20 @@ public class FormEcrituresController {
 	private CategorieRepository categorieRepository;
 	@Autowired
 	private EntrepriseRepository entrepriseRepository;
+	@Autowired
+	private LibelleEcritureRepository libelleEcritureRepository;
 
 
 	@GetMapping(value = "form-ecritures")
 	public ModelMap mmFormElements(Model model) {
 		model.addAttribute("ecriture", new Ecriture());
 		return new ModelMap();
+	}
+
+
+
+	@ModelAttribute("libelles")
+	public List<LibelleEcriture> getLibellesEcriture() {return libelleEcritureRepository.findAll();
 	}
 
 	@ModelAttribute("ecritures")

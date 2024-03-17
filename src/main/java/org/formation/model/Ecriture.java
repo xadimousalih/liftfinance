@@ -23,8 +23,9 @@ public class Ecriture {
 	private long id;
 	
 	private String numero;
-	
-	private String libelle;
+
+	@ManyToOne
+	private LibelleEcriture libelle;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
